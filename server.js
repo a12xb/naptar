@@ -3,7 +3,6 @@ const fs = require('fs').promises;
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
 const PLANS_FILE = path.join(__dirname, 'plans.json');
 
 app.use(express.json());
@@ -24,6 +23,8 @@ app.post('/plans', async (req, res) => {
   res.json({ status: 'ok', written: incoming });
 });
 
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-  console.log(`Server listening: http://localhost:${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
 });
