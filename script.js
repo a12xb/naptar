@@ -57,14 +57,14 @@ function fillTable() {
 }
 function savePlan(date, text) {
     var _a;
-    fetch("https://a12xb.duckdns.org/api/plans", {
+    fetch("https://a12xb.duckdns.org/plans", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify((_a = {}, _a[date] = text, _a))
     });
 }
 function fetchPlans() {
-    fetch('https://a12xb.duckdns.org/api/plans') //GET
+    fetch('https://a12xb.duckdns.org/plans') //GET
         .then(function (response) { return response.json(); })
         .then(function (plans) {
         Object.entries(plans).forEach(function (_a) {
