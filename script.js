@@ -38,8 +38,6 @@ function fillTable() {
         td.textContent = "";
         if (dayNumber >= 1 && dayNumber <= daysInMonth) {
             td.textContent = "".concat(dayNumber);
-            var div = document.createElement('div');
-            div.id = "plan-container";
             var newInput = document.createElement('textarea');
             newInput.id = "".concat(displayedYear, "-").concat(displayedMonth + 1, "-").concat(dayNumber);
             td.appendChild(newInput);
@@ -47,7 +45,7 @@ function fillTable() {
         tableTdCounter++;
         var input = td.querySelector("textarea");
         if (input) {
-            input.addEventListener("textarea", function () {
+            input.addEventListener("input", function () {
                 var date = input.id;
                 var text = input.value;
                 savePlan(date, text);
