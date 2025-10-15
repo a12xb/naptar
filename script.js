@@ -2,9 +2,13 @@ var today = new Date();
 var displayedYear = today.getFullYear();
 var displayedMonth = today.getMonth();
 var tableDatas = document.querySelectorAll("#calendar tbody td");
-var leftButton = document.querySelector("button#leftButton");
-var rightButton = document.querySelector("button#rightButton");
-var displayYearMonth = document.querySelector("div#year-month");
+var leftButton = document.getElementById("leftButton");
+var rightButton = document.getElementById("rightButton");
+var displayYearMonth = document.getElementById("year-month");
+var checkbox = document.getElementById("dark-mode");
+checkbox === null || checkbox === void 0 ? void 0 : checkbox.addEventListener("change", function () {
+    document.body.classList.toggle("dark-mode", checkbox.checked);
+});
 leftButton.addEventListener("click", function () {
     displayedMonth--;
     if (displayedMonth < 0) {

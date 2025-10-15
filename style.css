@@ -41,10 +41,10 @@ textarea {
 button {
   padding: 12px 24px;
   font-size: 32px;
-  border-radius: 6px;
   background-color: #ccc;
   color: black;
   cursor: pointer;
+  margin-bottom: 0;
 }
 button:hover {
   background-color:#eeeeee;
@@ -52,6 +52,41 @@ button:hover {
 .year-month {
   text-align: center;
   font-size: 1.5rem;
-  font-weight: 600;
   margin: 16px 0;
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode table,
+body.dark-mode td {
+  border-color: #444;
+}
+body.dark-mode textarea {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+body.dark-mode button {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+.dark-mode-toggle input[type="checkbox"] {
+  cursor:pointer;
+  width: 32px;
+  height: 32px;
+  accent-color: #333;
+}
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.dark-mode-toggle {
+  position: absolute;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
