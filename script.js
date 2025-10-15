@@ -4,8 +4,7 @@ var displayedMonth = today.getMonth();
 var tableDatas = document.querySelectorAll("#calendar tbody td");
 var leftButton = document.querySelector("button#leftButton");
 var rightButton = document.querySelector("button#rightButton");
-var displayYearMonth = document.createElement('div');
-document.body.appendChild(displayYearMonth);
+var displayYearMonth = document.querySelector("div#year-month");
 leftButton.addEventListener("click", function () {
     displayedMonth--;
     if (displayedMonth < 0) {
@@ -30,7 +29,9 @@ function fillTable() {
     tableTdCounter = 0;
     currentFirstDay = new Date(displayedYear, displayedMonth, 1);
     currentFirstWeekday = (currentFirstDay.getDay() + 6) % 7;
-    displayYearMonth.textContent = "".concat(displayedYear, "-").concat(displayedMonth + 1);
+    if (displayYearMonth) {
+        displayYearMonth.textContent = "".concat(displayedYear, "-").concat(displayedMonth + 1);
+    }
     var daysInMonth = new Date(displayedYear, displayedMonth + 1, 0).getDate();
     tableDatas.forEach(function (td) {
         var dayNumber = tableTdCounter - currentFirstWeekday + 1;
@@ -39,14 +40,14 @@ function fillTable() {
             td.textContent = "".concat(dayNumber);
             var div = document.createElement('div');
             div.id = "plan-container";
-            var newInput = document.createElement('input');
+            var newInput = document.createElement('textarea');
             newInput.id = "".concat(displayedYear, "-").concat(displayedMonth + 1, "-").concat(dayNumber);
             td.appendChild(newInput);
         }
         tableTdCounter++;
-        var input = td.querySelector("input");
+        var input = td.querySelector("textarea");
         if (input) {
-            input.addEventListener("input", function () {
+            input.addEventListener("textarea", function () {
                 var date = input.id;
                 var text = input.value;
                 savePlan(date, text);
